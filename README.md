@@ -14,3 +14,17 @@ kubectl apply -f k8s
 
 kubectl get pods
 kubectl logs <pod-name>
+
+## we can create a secret (imperative command, without using config file) just like a pod or deployment
+
+kubectl create secret generic <secret-name> --from-literal key=value
+
+e.g
+
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf
+
+## there are multiple secret types like
+
+kubectl create secret generic <secret-name> --from-literal key=value
+kubectl create secret tls <secret-name> --from-literal key=value (https stuff)
+kubectl create secret docker-registry <secret-name> --from-literal key=value (with some costom authentication for docker images)
