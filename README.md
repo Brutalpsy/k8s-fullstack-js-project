@@ -25,6 +25,6 @@ kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf
 
 ## there are multiple secret types like
 
-kubectl create secret generic <secret-name> --from-literal key=value
-kubectl create secret tls <secret-name> --from-literal key=value (https stuff)
+kubectl create secret generic <secret-name> --from-literal key=value <br />
+kubectl create secret tls <secret-name> --from-literal key=value (https stuff) <br />
 kubectl create secret docker-registry <secret-name> --from-literal key=value (with some costom authentication for docker images)
