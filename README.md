@@ -2,7 +2,7 @@
 
     kubectl get deployments
     kubectl delete deployment <name-of-the-deployment>
-    
+
     kubectl get services
     kubectl delete service <name-of-the-service>
 
@@ -32,10 +32,12 @@ e.g
 ## If you are using Docker Desktop's built-in Kubernetes, setting up the admin dashboard is going to take a little more work.
 
 ## 1. Grab the most current script from the install instructions:
+
     https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
+
 eg:
 As of today, the kubectl apply command looks like this:
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
 
 ## 2. Create a dash-admin-user.yaml file and paste the following:
 
@@ -44,7 +46,9 @@ As of today, the kubectl apply command looks like this:
       metadata:
         name: admin-user
         namespace: kubernetes-dashboard
+
 ## 3. Apply the dash-admin-user configuration:
+
 kubectl apply -f dash-admin-user.yaml
 
 ## 4. Create dash-clusterrole-yaml file and paste the following:
@@ -61,7 +65,9 @@ kubectl apply -f dash-admin-user.yaml
         - kind: ServiceAccount
           name: admin-user
           namespace: kubernetes-dashboard
+
 ## 5. Apply the ClusterRole configuration:
+
     kubectl apply -f dash-clusterrole.yaml
 
 ## 6. In the terminal, run kubectl proxy
@@ -69,6 +75,7 @@ kubectl apply -f dash-admin-user.yaml
 You must keep this terminal window open and the proxy running!
 
 ## 7. Visit the following URL in your browser to access your Dashboard:
+
     http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
 ## 8. Obtain the token for this user by running the following in your terminal:
@@ -80,9 +87,11 @@ If your Kubernetes server version is v1.24 or higher you must run the following 
     kubectl -n kubernetes-dashboard create token admin-user
 
 ## If your Kubernetes server version is older than v1.24 you must run the following command:
+
     kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 
 ## 9. Copy the token from the above output and use it to log in at the dashboard.
+
 Be careful not to copy any extra spaces or output such as the trailing % you may see in your terminal.
 
 ## 10. After a successful login, you should now be redirected to the Kubernetes Dashboard.
@@ -90,3 +99,9 @@ Be careful not to copy any extra spaces or output such as the trailing % you may
 The above steps can be found in the official documentation:
 
 https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+## to use kubectl inside the google cloud shell
+
+gcloud config set <project-id-of-gcloud>
+gcloud config set compute/zone <your-cluster-zone (eg. europe-west1-b)>
+gcloud container clusters get-credentials <name-of-your-cluster>
