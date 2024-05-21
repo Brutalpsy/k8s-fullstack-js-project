@@ -118,6 +118,6 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
     --repo https://kubernetes.github.io/ingress-nginx \
     --namespace ingress-nginx --create-namespace
 
-## Check that your Ingress Controller was deployed:
+## Check that your Ingress Controller was deployed
 
     kubectl get service ingress-nginx-controller --namespace=ingress-nginx
