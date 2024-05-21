@@ -102,6 +102,22 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 
 ## to use kubectl inside the google cloud shell
 
-gcloud config set <project-id-of-gcloud>
-gcloud config set compute/zone <your-cluster-zone (eg. europe-west1-b)>
-gcloud container clusters get-credentials <name-of-your-cluster>
+        gcloud config set <project-id-of-gcloud>
+        gcloud config set compute/zone <your-cluster-zone (eg. europe-west1-b)>
+        gcloud container clusters get-credentials <name-of-your-cluster>
+
+## In order to install helm inside google cloud shell that is needed to install ingress-nginx ingress-nginx, run these commands in gcloud shell
+
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        chmod 700 get_helm.sh
+        ./get_helm.sh
+
+## installing Ingress Nginx using Helm
+
+        helm upgrade --install ingress-nginx ingress-nginx \
+        --repo https://kubernetes.github.io/ingress-nginx \
+        --namespace ingress-nginx --create-namespace
+
+## Check that your Ingress Controller was deployed:
+
+        kubectl get service ingress-nginx-controller --namespace=ingress-nginx
