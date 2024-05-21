@@ -112,7 +112,7 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
     chmod 700 get_helm.sh
     ./get_helm.sh
 
-## installing Ingress Nginx using Helm
+## installing Ingress Nginx using Helm:
 
     helm upgrade --install ingress-nginx ingress-nginx \
     --repo https://kubernetes.github.io/ingress-nginx \
