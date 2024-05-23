@@ -121,3 +121,15 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 ## Check that your Ingress Controller was deployed
 
     kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+
+## To check the certificates run:
+
+    kubectl get certificates
+
+## To get details about the certificates
+
+    kubectl describe certificates
+
+## To check secrets run
+
+    kubectl get secrets
