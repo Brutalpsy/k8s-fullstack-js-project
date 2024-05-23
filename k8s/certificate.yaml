@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+
+kind: Certificate
+metadata:
+  name: dajnestoglupavo-tls
+spec:
+  secretName: dajnestoglupavo-xyz
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: dajnestoglupavo.xyz
+  dnsNames:
+    - dajnestoglupavo.xyz
+    - www.dajnestoglupavo.xyz
