@@ -150,3 +150,15 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 ## To check secrets run
 
     kubectl get secrets
+
+## to run in locally with "hot" reload we would need to install skaffold
+
+    The latest stable release binary can be found here:
+
+    https://storage.googleapis.com/skaffold/releases/latest/skaffold-windows-amd64.exe
+
+    Simply download it and place it in your PATH as and rename the actual exe to skaffold.exe
+
+## to run the scaffold
+
+    skaffold dev --port-forward
